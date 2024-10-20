@@ -1,8 +1,27 @@
 import { useActionState } from "react";
 import { loginUser } from "../api/user";
+import { useFormStatus } from "react-dom";
+
+const SubmitButton = () => {
+  const { pending } = useFormStatus();
+
+  //https://react.dev/reference/react-dom/hooks/useFormStatus
+  //https://react.dev/blog/2024/04/25/react-19#new-hool-useformstatus - in parentContext without state mng.
+  //const { pending, data, method, action } = useFormStatus();
+
+  return (
+    <button type="submit" disabled={pending}>
+      {pending ? "Logging in..." : "Login"}
+    </button>
+  );
+};
 
 const LoginReact19 = () => {
-  const [user, submitAction, isPending] = useActionState(login, {
+  const [
+    user,
+    submitAction,
+    // isPending
+  ] = useActionState(login, {
     error: null,
     data: null,
   });
@@ -14,7 +33,7 @@ const LoginReact19 = () => {
       const response = await loginUser(username, password);
       return { error: null, data: response.data };
     } catch (error) {
-      return { data: null, error: error.error };
+      return { ...previousState, error: error.error };
     }
   }
 
@@ -28,9 +47,8 @@ const LoginReact19 = () => {
         <label>Password:</label>
         <input name="password" type="password" required />
       </div>
-      <button type="submit" disabled={isPending}>
-        {isPending ? "Logging in..." : "Login"}
-      </button>
+
+      <SubmitButton />
 
       {user.data && (
         <p style={{ color: "green" }}>Logged in: {user.data.email}</p>
