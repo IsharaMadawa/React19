@@ -1,7 +1,6 @@
-/* eslint-disable react/display-name */
-import { useRef, forwardRef, useImperativeHandle } from "react";
+import { useRef, useImperativeHandle } from "react";
 
-const CustomInput = forwardRef((props, ref) => {
+const CustomInputNew = ({ ref, ...props }) => {
   const inputRef = useRef();
 
   useImperativeHandle(ref, () => ({
@@ -14,6 +13,6 @@ const CustomInput = forwardRef((props, ref) => {
   }));
 
   return <input ref={inputRef} {...props} />;
-});
+};
 
-export default CustomInput;
+export default CustomInputNew;
