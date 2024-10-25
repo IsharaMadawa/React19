@@ -9,8 +9,10 @@ function App() {
     <div>
       <LoginOld />
       <hr />
+      <h2>with actions</h2>
       <LoginAction />
       <hr />
+      <h2>with useActionState</h2>
       <LoginReact19 />
     </div>
   )
