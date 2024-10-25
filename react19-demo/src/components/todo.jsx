@@ -29,7 +29,7 @@ function TodoList() {
   return (
     <div>
       <h2>Todo List</h2>
-      {optimisticTodos.map((todo, index) => (
+      {optimisticTodos.map((todo, index) => ( // here we use "optimisticTodos" insted on "todos" state
         <div key={index}>
           {todo.text}
           {todo.pending && <span> (Adding...)</span>}
