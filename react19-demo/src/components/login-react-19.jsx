@@ -1,7 +1,7 @@
 //useFormStatus
 import { useActionState } from "react";
 import { loginUser } from "../api/user";
-import { useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom"; // checks any form elements is available in nearest parent scope
 
 const SubmitButton = () => {
   const { pending } = useFormStatus();
