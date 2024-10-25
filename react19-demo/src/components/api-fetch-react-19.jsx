@@ -4,7 +4,7 @@ function PostsReact19() {
   // Use `use` to suspend until the promise resolves
   const fetchPosts = fetch("https://jsonplaceholder.typicode.com/posts").then(
     (response) => response.json()
-  );
+  ); // will return promise
   //Limitation - will create a new promise on every render - for now, to overcome this we can use caching mechanism to cache promises
 
   const posts = use(fetchPosts);
